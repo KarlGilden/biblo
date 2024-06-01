@@ -1,0 +1,14 @@
+# Turn rewriting on
+Options +FollowSymLinks
+RewriteEngine On
+
+# rewrite css files to their actual path
+RewriteRule ^css/(.+\.css)$ resources/styles/$1 [L,NC]
+
+# rewrite js files to their actual path
+RewriteRule ^js/(.+\.js)$ resources/js/$1 [L,NC]
+
+# write root to public/
+RewriteRule ^$ public/ [L]
+
+RewriteRule !^resources/ public/index.php [L,NC]

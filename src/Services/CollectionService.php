@@ -2,21 +2,35 @@
 
 namespace App\Services;
 
+use App\Models\Collection;
+
 class CollectionService{
 
     public function get_all_collections($iso){
-        $collections = file_get_contents(dirname(__DIR__)."/Data/Collections.json");
-        if(!$collections){
+
+        $collections_string = file_get_contents(dirname(__DIR__)."/Data/Collections.json");
+
+        if(!$collections_string){
             return [];
         }
-        $collections_array = json_decode($collections, true);
-        $filtered_collections = array_filter($collections_array, function($collection){
-            if($collection["iso"] == $iso){
-                return true;
-            }
+
+        $collections_array = json_decode($collections_string, true);
+
+        $filtered_collections = array_filter($collections_array, function($collection) use($iso){
+            return $collection["iso"] == $iso;
         });
 
-        return $filtered_collections;
+        $collection_objects = array();
+
+        for($i=0;$i<count($filtered_collections);$i++){
+            $collection_objects[] = new Collection(
+                $filtered_collections[$i]["title"], 
+                $filtered_collections[$i]["description"],
+                $filtered_collections[$i]["grade"],
+                $filtered_collections[$i]["iso"]
+            );
+        }
+        return $collection_objects;
     }
 }
 ?>

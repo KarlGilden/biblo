@@ -9,10 +9,12 @@ class Collection {
     public $grade;
     public $lessons;
 
-    public function __construct($title, $description, $grade)
+    public function __construct($title, $description, $grade, $iso)
     {
-        $this->name = $name;
-        $this->publishedYear = $publishedYear;
+        $this->title = $title;
+        $this->description = $description;
+        $this->grade = $grade;
+        $this->iso = $iso;
     }
 
 }
