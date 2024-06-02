@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Models\Dtos;
+namespace App\Models;
 
 class Lesson {
 
