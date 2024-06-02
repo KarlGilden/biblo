@@ -1,30 +1,44 @@
 [
     {
         "id": 1,
-        "title": "Lesson 1",
-        "description": "description 1",
+        "title": "Absolute Beginner",
+        "description": "A guided course teaching you basic structures through stories. For absolute beginners with no experience in Te Reo. ",
         "grade": 0,
         "iso": "mi"
     },
     {
         "id": 2,
-        "title": "Lesson 2",
-        "description": "description 2",
-        "grade": 0,
-        "iso": "fr"
+        "title": "Beginner",
+        "description": "An introduction to more advanced concepts. For learners with some experience in Te Reo.",
+        "grade": 1,
+        "iso": "mi"
     },
     {
         "id": 3,
-        "title": "Lesson 3",
-        "description": "description 3",
-        "grade": 0,
+        "title": "Intermediate",
+        "description": "Stories which use descriptive language and less common words. For learners looking to expand their vocabulary",
+        "grade": 2,
         "iso": "mi"
     },
     {
         "id": 4,
-        "title": "Lesson 4",
-        "description": "description 4",
+        "title": "Absolute Beginner",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
         "grade": 0,
-        "iso": "mi"
+        "iso": "tl"
+    },
+    {
+        "id": 5,
+        "title": "Beginner",
+        "description": "description 2",
+        "grade": 0,
+        "iso": "tl"
+    },
+    {
+        "id": 6,
+        "title": "Intermediate",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+        "grade": 0,
+        "iso": "tl"
     }
 ]

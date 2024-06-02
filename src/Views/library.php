@@ -30,14 +30,44 @@
 </nav>
 
 <div class="page">
-    <?php for($i=0;$i<count($data);$i++){ ?>
-        <div>
-            <h2><?php echo $data[$i]->title ?></h2>
-            <p><?php echo $data[$i]->description ?></p>
-            <p><?php echo $data[$i]->grade ?></p>
-            <p><?php echo $data[$i]->iso ?></p>
-        </div>
-    <?php } ?>
+  <div class="page-header">
+    <h1>Library</h1>
+  </div>
+
+  <?php if(count($data["collections"]) == 0){ ?>
+    <div class="lesson-container">
+      <h2 class="lesson-container-title">Nothing to see here</h2>
+    </div>
+  <?php } ?>
+
+  <?php for($i=0;$i<count($data["collections"]);$i++){ ?>
+
+    <div class="lesson-container">
+      <div class="lesson-container-header">
+        <h2 class="lesson-container-title"><?php echo $data["collections"][$i]->title ?></h2>
+        <i><p><?php echo $data["collections"][$i]->description ?></p></i>
+      </div>
+
+      <div class="lesson-carrossel">
+
+        <?php if(count($data["lessons"]) == 0){ ?>
+          <div class="lesson-card">
+            <h3 class="lesson-card-title">Nothing to see here</h3>
+          </div>
+        <?php } ?>
+
+        <?php for($j=0;$j<count($data["lessons"]);$j++){ 
+          if($data["lessons"][$j]->collectionId == $data["collections"][$i]->id){ ?>
+            <div class="lesson-card">
+              <h3 class="lesson-card-title"><?php echo $data["lessons"][$j]->title ?></h3>
+            </div>
+        <?php }} ?>
+      </div>
+      
+    </div>
+
+  <?php } ?>
+
 </div>
 
 

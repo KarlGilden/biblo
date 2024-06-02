@@ -6,7 +6,7 @@ use App\Models\Collection;
 
 class CollectionService{
 
-    public function get_all_collections($iso){
+    public function get_all($iso){
 
         $collections_string = file_get_contents(dirname(__DIR__)."/Data/Collections.json");
 
@@ -20,10 +20,13 @@ class CollectionService{
             return $collection["iso"] == $iso;
         });
 
+        $filtered_collections = array_values(array_values($filtered_collections)); // reset indexes
+
         $collection_objects = array();
 
         for($i=0;$i<count($filtered_collections);$i++){
             $collection_objects[] = new Collection(
+                $filtered_collections[$i]["id"],
                 $filtered_collections[$i]["title"], 
                 $filtered_collections[$i]["description"],
                 $filtered_collections[$i]["grade"],
