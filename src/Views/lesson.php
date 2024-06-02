@@ -1,4 +1,12 @@
 <?php require 'Components/Header.php' ?>
+<?php 
+
+use App\Parsedown;
+
+$lesson = $data[0]
+
+?>
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Biblo</a>
@@ -29,16 +37,49 @@
   </div>
 </nav>
 
-<?php $lesson = $data[0] ?>
-
 <div class="page">
-    <h1><?php echo $lesson->title ?></h1>
-    <br>
-    <p>Grammar Guide:</p>
-    <p><?php echo $lesson->grammarGuide ?></p>
-    <br>
-    <p>Story:</p>
-    <p><?php echo $lesson->story ?></p>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button 
+                class="nav-link active" 
+                id="grammarguide-tab" 
+                data-bs-toggle="tab" 
+                data-bs-target="#grammarguide-tab-pane" 
+                type="button" 
+                role="tab" 
+                aria-controls="grammarguide-tab-pane" 
+                aria-selected="true"
+            >
+            Grammar Guide
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button 
+                class="nav-link" 
+                id="story-tab" 
+                data-bs-toggle="tab" 
+                data-bs-target="#story-tab-pane" 
+                type="button" 
+                role="tab" 
+                aria-controls="story-tab-pane" 
+                aria-selected="true"
+            >
+            Story
+            </button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active lesson-content-container" id="grammarguide-tab-pane" role="tabpanel" aria-labelledby="grammarguide-tab" tabindex="0">
+            <?php 
+            $Parsedown = new Parsedown();
+            echo $Parsedown->text($lesson->grammarGuide);
+            ?>
+        </div>
+        <div class="tab-pane fade lesson-content-container" id="story-tab-pane" role="tabpanel" aria-labelledby="story-tab" tabindex="0">
+            <h3 class="story-title"><?php echo $lesson->title ?></h3>
+            <p><?php echo $lesson->story ?></p>
+        </div>
+    </div>
 </div>
 
 
