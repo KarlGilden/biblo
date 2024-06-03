@@ -13,7 +13,7 @@ $router->get('/', function(){
 });
 $router->get('/library', function(){
     $controller = new LibraryController();
-    $controller->index();
+    $controller->select_language();
 });
 
 $router->get('/library/$iso', function($iso){

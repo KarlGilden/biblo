@@ -23,7 +23,10 @@ class LessonController extends Controller
         if(!$lesson){
             $lesson = array();
         }
-        
-        $this->render('lesson', $lesson);
+
+        $data["lesson"] = $lesson;
+        $data["iso"] = $iso;
+
+        $this->render('lesson', $data);
     }
 }

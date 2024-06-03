@@ -3,7 +3,8 @@
 
 use App\Parsedown;
 
-$lesson = $data[0]
+$lesson = $data["lesson"];
+$iso = $data["iso"];
 
 ?>
 
@@ -16,10 +17,10 @@ $lesson = $data[0]
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link active" aria-current="page" href=<?php echo "/library/$iso" ?>>Library</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -76,8 +77,28 @@ $lesson = $data[0]
             ?>
         </div>
         <div class="tab-pane fade lesson-content-container" id="story-tab-pane" role="tabpanel" aria-labelledby="story-tab" tabindex="0">
-            <h3 class="story-title"><?php echo $lesson->title ?></h3>
-            <p><?php echo $lesson->story ?></p>
+            <h3 class="story-title"><?= $lesson->title ?></h3>
+            <div>
+
+              <?php 
+                $paragraphs = explode("\n\n", $lesson->story);
+                $word_index = 0;
+
+                for($i=0;$i<count($paragraphs);$i++){ ?>
+                  <div class="paragraph" id=<?= "p" . $i ?> onMouseUp="handleSelectText()">
+
+                    <?php 
+                      $words = explode(" ", $paragraphs[$i]); 
+                      for($j=0;$j<count($words);$j++){ ?>
+                        <span class="word" id=<?= "w" . $word_index ?>><?= $words[$j] ?></span>
+                    <?php $word_index++; } ?>
+
+                  </div>
+                <?php } ?>
+                <div id="dictionary">
+                    
+                </div>
+            </div>
         </div>
     </div>
 </div>

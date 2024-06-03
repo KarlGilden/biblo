@@ -63,7 +63,11 @@ class LessonService{
             $lesson["collectionId"]
         );
 
-        return [$lesson_object];
+        return $lesson_object;
+    }
+
+    public function get_formatted_story($story){
+        
     }
 }
 ?>

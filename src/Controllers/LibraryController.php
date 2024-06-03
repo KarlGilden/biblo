@@ -14,6 +14,11 @@ class LibraryController extends Controller
         $this->render('404');
     }
 
+    public function select_language()
+    {
+        $this->render('selection');
+    }
+
     public function get_collections($iso){
         $data = array();
 
@@ -26,10 +31,6 @@ class LibraryController extends Controller
             $collections = array();
         }
 
-        // for($i=0;$i<count($collections);$i++){
-        //     $lessons = $lesson_service->get_some_for_collection($iso, $collections[$i]->id, 2);
-        //     $collections[]
-        // }
         $lessons = $lesson_service->get_all($iso);
 
         if(!$lessons){
@@ -38,6 +39,7 @@ class LibraryController extends Controller
 
         $data["collections"] = $collections;
         $data["lessons"] = $lessons;
+        $data["iso"] = $iso;
 
         $this->render('library', $data);
     }

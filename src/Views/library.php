@@ -1,4 +1,9 @@
 <?php require 'Components/Header.php' ?>
+<?php 
+  $collections = $data["collections"];
+  $lessons = $data["lessons"];
+  $iso = $data["iso"];
+?>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Biblo</a>
@@ -8,10 +13,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link active" aria-current="page" href=<?php echo "/library/" . $iso ?>>Library</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,33 +39,36 @@
     <h1>Library</h1>
   </div>
 
-  <?php if(count($data["collections"]) == 0){ ?>
+  <?php if(count($collections) == 0){ ?>
     <div class="lesson-container">
       <h2 class="lesson-container-title">Nothing to see here</h2>
     </div>
   <?php } ?>
 
-  <?php for($i=0;$i<count($data["collections"]);$i++){ ?>
+  <?php for($i=0;$i<count($collections);$i++){ ?>
 
     <div class="lesson-container">
       <div class="lesson-container-header">
-        <h2 class="lesson-container-title"><?php echo $data["collections"][$i]->title ?></h2>
+        <h2 class="lesson-container-title"><?php echo $collections[$i]->title ?></h2>
         <i><p><?php echo $data["collections"][$i]->description ?></p></i>
       </div>
 
       <div class="lesson-carrossel">
 
-        <?php if(count($data["lessons"]) == 0){ ?>
+        <?php if(count($lessons) == 0){ ?>
           <div class="lesson-card">
             <h3 class="lesson-card-title">Nothing to see here</h3>
           </div>
         <?php } ?>
 
-        <?php for($j=0;$j<count($data["lessons"]);$j++){ 
-          if($data["lessons"][$j]->collectionId == $data["collections"][$i]->id){ ?>
+        <?php for($j=0;$j<count($lessons);$j++){ 
+          if($lessons[$j]->collectionId == $collections[$i]->id){ ?>
+          <a href=<?php echo "/lesson/" . $lessons[$j]->iso . "/" . $lessons[$j]->id?>>
             <div class="lesson-card">
-              <h3 class="lesson-card-title"><?php echo $data["lessons"][$j]->title ?></h3>
+              <h3 class="lesson-card-title"><?php echo $lessons[$j]->title ?></h3>
             </div>
+          </a>
+
         <?php }} ?>
       </div>
       

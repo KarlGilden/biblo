@@ -31,7 +31,11 @@
 </nav>
 
 <div class="page">
-    <h1>Home</h1>
+    <h1>Choose a language:</h1>
+    <a href="/library/mi">Te reo Māori</a>
+    <a href="/library/tl">Tagalog</a>
+
+
 </div>
 
 <?php require 'Components/Footer.php' ?>
