@@ -1,15 +1,27 @@
-const handleSelectText = () => {
+const handleSelectText = async () => {
     removeHighlight();
 
     selectText();
 
     const selectedText = getSelectedText();
 
+    const translation = await getTranslation(selectedText);
+
     displayText(selectedText);
 };
 
+const getTranslation = async (text) => {
+    await fetch("/translate/mi/"+text, {
+
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        console.log(data);
+    })
+};
+
 const displayText = (selectedText) => {
-    const dictionary = document.getElementById("dictionary");
+    const dictionary = document.getElementById("dictionary-original");
 
     if(!dictionary) return;
 
@@ -58,6 +70,7 @@ const selectText = () => {
 
 const formatWord = (str) => {
     if(!str) return "";
+    str = str.replace( /  +/g, ' ' );
     return str.replace(/[^a-z0-9 āēīōū]/gi, '').toLowerCase();
 };
 

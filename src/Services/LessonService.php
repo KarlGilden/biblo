@@ -65,9 +65,5 @@ class LessonService{
 
         return $lesson_object;
     }
-
-    public function get_formatted_story($story){
-        
-    }
 }
 ?>

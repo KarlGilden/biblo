@@ -32,8 +32,18 @@ p{
     margin: 0;
 }
 
+.page-wrapper{
+    min-height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 .page{
     padding: 0 2rem 0 2rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .page-header{
@@ -44,7 +54,7 @@ p{
 * Library
 *********************/
 
-.lesson-container{
+.lesson-library-container{
     margin-bottom: 2rem;
 }
 
@@ -78,8 +88,16 @@ p{
 * Lesson
 *********************/
 .lesson-content-container{
-    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
+
+.lesson-content{
+    padding: 1rem;
+    flex-grow: 1;
+}
+
 .story-title{
     font-size: 1rem;
 }
@@ -92,4 +110,21 @@ p{
     background-color: goldenrod;
     border-radius: 2px;
     height: 100%;
+}
+
+.lesson-container{
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.dictionary{
+    padding: 1rem;
+    background-color: white;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }

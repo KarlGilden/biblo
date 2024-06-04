@@ -8,48 +8,50 @@ $iso = $data["iso"];
 
 ?>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Biblo</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href=<?php echo "/library/$iso" ?>>Library</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <?php 
-              switch($iso){
-                case "mi":
-                  echo "Māori";
-                  break;
-                
-                case "tl":
-                  echo "Tagalog";
-                  break;
-                default:
-                  echo "Select a language";
-              }
-            ?>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/library/mi">Māori</a></li>
-            <li><a class="dropdown-item" href="/library/tl">Tagalog</a></li>
-          </ul>
-        </li>
-      </ul>
+<div class="page-wrapper">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Biblo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href=<?php echo "/library/$iso" ?>>Library</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <?php 
+                switch($iso){
+                  case "mi":
+                    echo "Māori";
+                    break;
+                  
+                  case "tl":
+                    echo "Tagalog";
+                    break;
+                  default:
+                    echo "Select a language";
+                }
+              ?>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/library/mi">Māori</a></li>
+              <li><a class="dropdown-item" href="/library/tl">Tagalog</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<div class="page">
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <div class="page">
+    <div class="lesson-container">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button 
                 class="nav-link active" 
@@ -78,18 +80,26 @@ $iso = $data["iso"];
             Story
             </button>
         </li>
-    </ul>
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active lesson-content-container" id="grammarguide-tab-pane" role="tabpanel" aria-labelledby="grammarguide-tab" tabindex="0">
+      </ul>
+      <div class="tab-content lesson-content-container" id="myTabContent">
+
+        <div class="tab-pane fade show active lesson-content" id="grammarguide-tab-pane" role="tabpanel" aria-labelledby="grammarguide-tab" tabindex="0">
             <?php 
             $Parsedown = new Parsedown();
             echo $Parsedown->text($lesson->grammarGuide);
             ?>
+            <br>
+            <button 
+                class="btn btn-primary"
+                type="button"
+                onClick="triggerButtonPressById('story-tab')"
+              >To the story</button>
         </div>
-        <div class="tab-pane fade lesson-content-container" id="story-tab-pane" role="tabpanel" aria-labelledby="story-tab" tabindex="0">
-            <h3 class="story-title"><?= $lesson->title ?></h3>
-            <div>
 
+        <div class="tab-pane fade lesson-content" id="story-tab-pane" role="tabpanel" aria-labelledby="story-tab" tabindex="0">
+            <h3 class="story-title"><?= $lesson->title ?></h3>
+
+            <div>
               <?php 
                 $paragraphs = explode("\n\n", $lesson->story);
                 $word_index = 0;
@@ -104,14 +114,22 @@ $iso = $data["iso"];
                     <?php $word_index++; } ?>
 
                   </div>
-                <?php } ?>
-                <div id="dictionary">
-                    
-                </div>
+              <?php } ?>
+
+            <div id="dictionary" class="dictionary">
+              <p id="dictionary-original">Select a word to start</p>
+              <input type="text">
             </div>
+
+          </div>
+            
         </div>
+      </div>
     </div>
+
+  </div>
 </div>
+
 
 
 <?php require 'Components/Footer.php' ?>

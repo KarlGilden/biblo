@@ -25,3 +25,8 @@ $router->get('/lesson/$iso/$id', function($iso, $id){
     $controller = new LessonController();
     $controller->get_lesson($iso, $id);
 });
+
+$router->get('/translate/$iso/$text', function($iso, $text){
+    $controller = new LessonController();
+    $controller->get_translation($iso, $text);
+});
