@@ -118,7 +118,7 @@ $iso = $data["iso"];
 
             <div id="dictionary" class="dictionary">
               <p id="dictionary-original">Select a word to start</p>
-              <input type="text">
+              <input id="dictionary-input" type="text">
             </div>
 
           </div>

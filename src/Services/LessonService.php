@@ -54,11 +54,14 @@ class LessonService{
 
         $lesson = $filtered_lessons[0];
 
+        $lesson_story_string = file_get_contents(dirname(__DIR__)."/Data/stories/s".$lesson["storyId"].".txt");
+        $lesson_gg_string = file_get_contents(dirname(__DIR__)."/Data/grammarGuides/gg".$lesson["grammarGuideId"].".md");
+
         $lesson_object = new Lesson(
             $lesson["id"],
             $lesson["title"],
-            $lesson["story"],
-            $lesson["grammarGuide"],
+            $lesson_story_string,
+            $lesson_gg_string,
             $lesson["iso"],
             $lesson["collectionId"]
         );

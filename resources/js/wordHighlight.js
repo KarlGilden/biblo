@@ -4,28 +4,35 @@ const handleSelectText = async () => {
     selectText();
 
     const selectedText = getSelectedText();
+    displayOriginal(selectedText);
+    displayTranslation("");
 
     const translation = await getTranslation(selectedText);
-
-    displayText(selectedText);
+    displayTranslation(translation);
 };
 
 const getTranslation = async (text) => {
-    await fetch("/translate/mi/"+text, {
+    const res = await fetch(`/translate/mi/${text}`, {})
 
-    })
-    .then(res=>res.json())
-    .then(data=>{
-        console.log(data);
-    })
+    const data = await res.json();
+
+    return data.data.translations[0].translatedText;
 };
 
-const displayText = (selectedText) => {
+const displayOriginal = (selectedText) => {
     const dictionary = document.getElementById("dictionary-original");
 
     if(!dictionary) return;
 
     dictionary.textContent = selectedText;
+};
+
+const displayTranslation = (translatedText) => {
+    const dictionary = document.getElementById("dictionary-input");
+
+    if(!dictionary) return;
+
+    dictionary.value = translatedText;
 };
 
 const getSelectedText = () => {

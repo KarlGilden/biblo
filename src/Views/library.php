@@ -65,7 +65,7 @@
           <i><p><?php echo $data["collections"][$i]->description ?></p></i>
         </div>
 
-        <div class="lesson-carrossel">
+        <div class="lesson-carousel">
 
           <?php if(count($lessons) == 0){ ?>
             <div class="lesson-card">
