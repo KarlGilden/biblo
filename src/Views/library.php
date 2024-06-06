@@ -3,11 +3,16 @@
   $collections = $data["collections"];
   $lessons = $data["lessons"];
   $iso = $data["iso"];
+
+  $titles = [];
+  $titles["mi"] = "Kia Ora!";
+  $titles["tl"] = "Kumusta!";
+
 ?>
 
 <div class="page-wrapper">
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary color-nav">
+    <div class="container-fluid  ">
       <a class="navbar-brand" href="#">Biblo</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -48,7 +53,7 @@
 
   <div class="page">
     <div class="page-header">
-      <h1>Library</h1>
+      <h1 class="page-title"><?php echo $titles[$iso] ?></h1>
     </div>
 
     <?php if(count($collections) == 0){ ?>
@@ -62,7 +67,6 @@
       <div class="lesson-library-container">
         <div class="lesson-container-header">
           <h2 class="lesson-container-title"><?php echo $collections[$i]->title ?></h2>
-          <i><p><?php echo $data["collections"][$i]->description ?></p></i>
         </div>
 
         <div class="lesson-carousel">
@@ -75,9 +79,12 @@
 
           <?php for($j=0;$j<count($lessons);$j++){ 
             if($lessons[$j]->collectionId == $collections[$i]->id){ ?>
-            <a href=<?php echo "/lesson/" . $lessons[$j]->iso . "/" . $lessons[$j]->id?>>
+            <a class="lesson-card-link" href=<?php echo "/lesson/" . $lessons[$j]->iso . "/" . $lessons[$j]->id?>>
               <div class="lesson-card">
-                <h3 class="lesson-card-title"><?php echo $lessons[$j]->title ?></h3>
+                <div class="lesson-card-hero"></div>
+                <div class="lesson-card-footer">
+                  <h3 class="lesson-card-title"><?php echo $lessons[$j]->title ?></h3>
+                </div>
               </div>
             </a>
 

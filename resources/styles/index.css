@@ -1,3 +1,9 @@
+:root{
+    --primary-color: #00232b;
+    --secondary-color: #14ddac;
+    --secondary-color-dark: #11aa84;
+}
+
 *{
     padding: 0;
     margin: 0;
@@ -44,6 +50,7 @@ p{
     display: flex;
     flex-direction: column;
     flex: 1;
+    font-family: "Nunito", sans-serif;
 }
 
 .page-header{
@@ -69,19 +76,41 @@ p{
 .lesson-carousel{
     display: flex;
     width: 100%;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    scrollbar-width: 0px;
 }
 
 .lesson-card{
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s;
     width: 250px;
-    max-height: 150px;
+    height: 150px;
     overflow: hidden;
-    border-radius: 2px;
-    padding: 1rem;
-    margin: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border-radius: 5px;
+    margin-right: 2rem;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.lesson-card-hero{
+    height: 75%;
+    background-color: var(--primary-color);
+}
+
+.lesson-card-footer{
+    display: flex;
+    align-items: center;
+    height: 25%;
+    padding: 0 0.5rem;
+}
+
+.lesson-card:hover {
+    transition: all 0.3s;
+    transform: translate(0, 2px);
+    border-color: lightgray;
+}
+
+.lesson-card-link{
+    text-decoration: none;
+    color: var(--primary-color);
 }
 
 .lesson-card-title{
@@ -136,4 +165,63 @@ p{
     bottom: 0;
     left: 0;
     right: 0;
+}
+
+.hero-section{
+    background-color: var(--primary-color);
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-text{
+    font-family: "Nunito", sans-serif;
+    max-width: 600px;
+    color: white;
+}
+
+.hero-text h1{
+    margin-bottom: 5px;
+}
+
+.hero-button{
+    transition: all 0.3s;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: black;
+    background-color: transparent;
+    border-style: solid;
+    border-color:gray;
+    border-width: 2px;
+    border-bottom-width: 5px;
+    border-radius: 10px;
+    color: white;
+}
+
+.hero-button:hover {
+    transition: all 0.3s;
+    transform: translate(0, 2px);
+    border-color: lightgray;
+}
+
+.btn-highlight{
+    color: black;
+    background-color: var(--secondary-color);
+    border-color:var(--secondary-color-dark);
+}
+
+.hero-title{
+    font-size: 2.5rem;
+}
+
+.page-title{
+    color: var(--primary-color);
+}
+
+.color-nav{
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+.color-nav a{
+    color: white !important;
 }
