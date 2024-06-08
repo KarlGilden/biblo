@@ -1,7 +1,7 @@
 <?php require 'Components/Header.php' ?>
 
 <div class="page-wrapper">
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Biblo</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,6 +39,81 @@
         </ul>
       </div>
     </div>
+  </nav> -->
+
+  <nav class="navbar">
+    <div class="logo">
+      <a href="/" class="logo-link">
+        <li>Biblo</li>
+      </a>
+    </div>
+    <p class="spacer-md"></p>
+    <ul class="nav-links">
+      <a href="/" class="nav-link">
+        <li>Home</li>
+      </a>
+      <p class="spacer-sm"></p>
+      <a href="/library" class="nav-link">
+        <li>Library</li>
+      </a>
+      <p class="spacer-sm"></p>
+      <a href="/resources" class="nav-link">
+        <li>Resources</li>
+      </a>
+    </ul>
+    <p class="spacer-sm"></p>
+    <div class=" dropdown">
+          <?php 
+                switch($iso){
+                  case "mi":
+                    echo "Māori";
+                    break;
+                  
+                  case "tl":
+                    echo "Tagalog";
+                    break;
+                  default:
+                    echo "Select a language";
+                }
+          ?> 🞃
+        <ul class="dropdown-links">
+            <a href="/library/mi" class="dropdown-link">
+              <div>Māori</div>
+            </a>
+            <a href="/library/tl" class="dropdown-link">
+              <div>Tagalog</div>
+            </a>
+            <a href="/library/af" class="dropdown-link">
+              <div>Afrikaans</div>
+            </a>
+        </ul>
+      </div>
+      <div class="burger-menu-container">
+        <button class="burger-button" onclick="openBurgerMenu()">☰</button>     
+      </div>
+      <div id="burger-menu" class="burger-menu menu-closed">
+        <div class="navbar">
+          <div class="logo">
+            <a href="/" class="logo-link">
+              <li>Biblo</li>
+            </a>
+          </div>
+          <button class="burger-button" onclick="openBurgerMenu()">☰</button>     
+        </div>
+        <div class="burger-body">
+          <a href="/" class="nav-link" onclick="openBurgerMenu()">
+            <li>Home</li>
+          </a>
+          <p class="spacer-sm"></p>
+          <a href="/library" class="nav-link" onclick="openBurgerMenu()">
+            <li>Library</li>
+          </a>
+          <p class="spacer-sm"></p>
+          <a href="/resources" class="nav-link" onclick="openBurgerMenu()">
+            <li>Resources</li>
+          </a>
+        </div>
+      </div>  
   </nav>
 
   <div class="page hero-section">
