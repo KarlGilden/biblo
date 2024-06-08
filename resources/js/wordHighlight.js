@@ -15,7 +15,7 @@ const getTranslation = async (text) => {
     const res = await fetch(`/translate/mi/${text}`, {})
 
     const data = await res.json();
-
+    console.log(data)
     return data.data.translations[0].translatedText;
 };
 
