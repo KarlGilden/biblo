@@ -5,8 +5,9 @@
   $iso = $data["iso"];
 
   $titles = [];
-  $titles["mi"] = "Kia Ora!";
-  $titles["tl"] = "Kumusta!";
+  $titles["mi"] = "Haere mai!";
+  $titles["tl"] = "Mabuhay!";
+  $titles["af"] = "Welkom!";
 
 ?>
 
@@ -25,7 +26,7 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href=<?php echo "/library/" . $iso ?>>Library</a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown color-nav">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <?php 
                 switch($iso){
@@ -36,14 +37,17 @@
                   case "tl":
                     echo "Tagalog";
                     break;
+                  case "af":
+                      echo "Afrikaans";
+                      break;
                   default:
                     echo "Select a language";
                 }
               ?>
             </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/library/mi">Māori</a></li>
-              <li><a class="dropdown-item" href="/library/tl">Tagalog</a></li>
+            <ul class="dropdown-menu color-nav">
+              <li><a class="dropdown-item color-nav" href="/library/mi">Māori</a></li>
+              <li><a class="dropdown-item color-nav" href="/library/tl">Tagalog</a></li>
             </ul>
           </li>
         </ul>
@@ -72,9 +76,7 @@
         <div class="lesson-carousel">
 
           <?php if(count($lessons) == 0){ ?>
-            <div class="lesson-card">
               <h3 class="lesson-card-title">Nothing to see here</h3>
-            </div>
           <?php } ?>
 
           <?php for($j=0;$j<count($lessons);$j++){ 
