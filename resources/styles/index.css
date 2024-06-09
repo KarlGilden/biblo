@@ -140,6 +140,25 @@ a{
     font-style: normal;
     padding: 1rem;
     flex-grow: 1;
+    display: none;
+}
+
+.lesson-content.active{
+    display: block;
+}
+
+.tab-button{
+    font-size: 1rem;
+    transition: all 0.3s;
+    padding: 0.5rem;
+    background-color: transparent;
+    border: solid 5px transparent;
+    cursor: pointer;
+}
+
+.tab-button.active{
+    transition: all 0.3s;
+    border-bottom-color: var(--secondary-color);
 }
 
 .story-title{
@@ -349,6 +368,10 @@ a{
     padding: 0.5rem 0.5rem;
 }
 
+.nav-dark .burger-menu{
+    background-color: var(--primary-color);
+}
+
 .burger-menu-container{
     display: none;
     position: relative;
@@ -367,6 +390,10 @@ a{
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.nav-dark .burger-button{
+    color: white;
 }
 
 .burger-button{

@@ -10,39 +10,27 @@ $iso = $data["iso"];
 
 <div class="page">
   <div class="lesson-container">
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item" role="presentation">
+    <ul class="" id="lesson-tabs">
           <button 
-              class="nav-link active" 
-              id="grammarguide-tab" 
-              data-bs-toggle="tab" 
-              data-bs-target="#grammarguide-tab-pane" 
-              type="button" 
-              role="tab" 
-              aria-controls="grammarguide-tab-pane" 
-              aria-selected="true"
+              class="tab-button active" 
+              id="grammarguide-tab-btn" 
+              data-to="grammarguide-tab"
+              onclick="handleTabChange(this)"
           >
           Grammar Guide
           </button>
-      </li>
-      <li class="nav-item" role="presentation">
           <button 
-              class="nav-link" 
-              id="story-tab" 
-              data-bs-toggle="tab" 
-              data-bs-target="#story-tab-pane" 
-              type="button" 
-              role="tab" 
-              aria-controls="story-tab-pane" 
-              aria-selected="true"
+              class="tab-button" 
+              id="story-tab-btn" 
+              data-to="story-tab"
+              onclick="handleTabChange(this)"
           >
           Story
           </button>
-      </li>
     </ul>
-    <div class="tab-content lesson-content-container" id="myTabContent">
+    <div class="lesson-content-container" id="lesson-tab-content">
 
-      <div class="tab-pane fade show active lesson-content" id="grammarguide-tab-pane" role="tabpanel" aria-labelledby="grammarguide-tab" tabindex="0">
+      <div class="lesson-content active" id="grammarguide-tab">
           <?php 
           $Parsedown = new Parsedown();
           echo $Parsedown->text($lesson->grammarGuide);
@@ -55,7 +43,7 @@ $iso = $data["iso"];
             >To the story</button>
       </div>
 
-      <div class="tab-pane fade lesson-content" id="story-tab-pane" role="tabpanel" aria-labelledby="story-tab" tabindex="0">
+      <div class="lesson-content" id="story-tab">
           <h3 class="story-title"><?= $lesson->title ?></h3>
 
           <div>

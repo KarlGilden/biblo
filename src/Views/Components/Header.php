@@ -71,7 +71,7 @@
           <div class="burger-menu-container">
             <button class="burger-button" onclick="openBurgerMenu()">☰</button>     
           </div>
-          <div id="burger-menu" class="burger-menu menu-closed">
+          <div id="burger-menu" class="burger-menu menu-closed <?php echo $data["nav_color"]; ?>">
             <div class="navbar">
               <div class="logo">
                 <a href="/" class="logo-link">
