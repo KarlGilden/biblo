@@ -82,7 +82,16 @@ a{
 
 .lesson-carousel{
     display: flex;
+    padding: 0.25rem 0;
     width: 100%;
+    overflow-x: scroll;
+    overflow-y: visible;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.lesson-carousel::-webkit-scrollbar{
+    display: none;
 }
 
 .lesson-card{

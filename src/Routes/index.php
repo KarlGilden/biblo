@@ -3,6 +3,7 @@
 use App\Controllers\HomeController;
 use App\Controllers\LibraryController;
 use App\Controllers\LessonController;
+use App\Controllers\ResourceController;
 use App\Router;
 
 $router = new Router();
@@ -29,4 +30,9 @@ $router->get('/lesson/$iso/$id', function($iso, $id){
 $router->get('/translate/$iso/$text', function($iso, $text){
     $controller = new LessonController();
     $controller->get_translation($iso, $text);
+});
+
+$router->get('/resource', function(){
+    $controller = new ResourceController();
+    $controller->index();
 });
