@@ -8,6 +8,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $this->render('index');
+        $data["title"] = "Home";
+        
+        $this->render('index', $data);
     }
 }

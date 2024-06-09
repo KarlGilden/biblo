@@ -1,5 +1,6 @@
 :root{
     --primary-color: #00232b;
+    --primary-color-dark: #00161b;
     --secondary-color: #14ddac;
     --secondary-color-dark: #11aa84;
 }
@@ -265,6 +266,15 @@ a{
     align-items: center;
 }
 
+.nav-dark{
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.nav-dark a{
+    color: white;
+}
+
 .logo{
     list-style: none;
 }
@@ -314,6 +324,18 @@ a{
     position: absolute;
     border-radius: 5px;
     min-width: 150px;
+}
+
+.nav-dark .dropdown-links{
+    background-color: var(--primary-color);
+}
+
+.nav-dark .dropdown-link div:hover{
+    background-color: var(--primary-color-dark);
+}
+
+.nav-dark .dropdown{
+    color: var(--secondary-color);
 }
 
 .dropdown-link div:hover{

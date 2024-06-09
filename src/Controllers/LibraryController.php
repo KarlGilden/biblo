@@ -40,6 +40,8 @@ class LibraryController extends Controller
         $data["collections"] = $collections;
         $data["lessons"] = $lessons;
         $data["iso"] = $iso;
+        $data["title"] = "Library";
+        $data["nav_color"] = "nav-dark";
 
         $this->render('library', $data);
     }
