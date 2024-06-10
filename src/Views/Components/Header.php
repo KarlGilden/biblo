@@ -34,7 +34,7 @@
             <li>Library</li>
           </a>
           <p class="spacer-sm"></p>
-          <a href="/resources" class="nav-link">
+          <a href="/learning-resources" class="nav-link">
             <li>Resources</li>
           </a>
         </ul>
@@ -86,7 +86,7 @@
                 <li>Library</li>
               </a>
               <p class="spacer-sm"></p>
-              <a href="/resources" class="nav-link" onclick="openBurgerMenu()">
+              <a href="/learning-resources" class="nav-link" onclick="openBurgerMenu()">
                 <li>Resources</li>
               </a>
             </div>

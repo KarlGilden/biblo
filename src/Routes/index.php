@@ -32,7 +32,7 @@ $router->get('/translate/$iso/$text', function($iso, $text){
     $controller->get_translation($iso, $text);
 });
 
-$router->get('/resource', function(){
+$router->get('/learning-resources', function(){
     $controller = new ResourceController();
     $controller->index();
 });

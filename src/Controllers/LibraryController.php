@@ -16,7 +16,8 @@ class LibraryController extends Controller
 
     public function select_language()
     {
-        $this->render('selection');
+        $data["title"] = "Choose a language";
+        $this->render('selection', $data);
     }
 
     public function get_collections($iso){
@@ -40,7 +41,7 @@ class LibraryController extends Controller
         $data["collections"] = $collections;
         $data["lessons"] = $lessons;
         $data["iso"] = $iso;
-        $data["title"] = "Library";
+        $data["title"] = "Library " . $iso;
         $data["nav_color"] = "nav-dark";
 
         $this->render('library', $data);

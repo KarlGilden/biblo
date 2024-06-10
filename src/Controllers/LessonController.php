@@ -26,7 +26,7 @@ class LessonController extends Controller
 
         $data["lesson"] = $lesson;
         $data["iso"] = $iso;
-        $data["title"] = "Lesson";
+        $data["title"] = $lesson->title;
         $data["nav_color"] = "nav-dark";
 
         $this->render('lesson', $data);
