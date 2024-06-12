@@ -8,7 +8,7 @@
 
     <p class="hero-text">Start reading immediately with our graded stories accompanied by easy to understand grammar explanations.</p>
     
-    <p class="spacer-sm"></p>
+    <p class="spacer-md"></p>
 
     <div class="hero-buttons">
       <a href="/library/mi">
