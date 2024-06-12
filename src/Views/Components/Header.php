@@ -19,25 +19,28 @@
     <div class="page-wrapper">
 
       <nav class="navbar <?php echo $data["nav_color"]; ?> ">
-        <div class="logo">
-          <a href="/" class="logo-link">
-            <li>Biblo</li>
-          </a>
+        <div class="nav-left-wrapper">
+          <div class="logo">
+            <a href="/" class="logo-link">
+              <li>Biblo</li>
+            </a>
+          </div>
+          <p class="spacer-md"></p>
+          <ul class="nav-links">
+            <a href="/" class="nav-link">
+              <li>Home</li>
+            </a>
+            <p class="spacer-sm"></p>
+            <a href="/library/<?= $iso ?>" class="nav-link">
+              <li>Library</li>
+            </a>
+            <p class="spacer-sm"></p>
+            <a href="/learning-resources" class="nav-link">
+              <li>Resources</li>
+            </a>
+          </ul>
         </div>
-        <p class="spacer-md"></p>
-        <ul class="nav-links">
-          <a href="/" class="nav-link">
-            <li>Home</li>
-          </a>
-          <p class="spacer-sm"></p>
-          <a href="/library/<?= $iso ?>" class="nav-link">
-            <li>Library</li>
-          </a>
-          <p class="spacer-sm"></p>
-          <a href="/learning-resources" class="nav-link">
-            <li>Resources</li>
-          </a>
-        </ul>
+        
         <p class="spacer-sm"></p>
         <div class=" dropdown">
               <?php 
