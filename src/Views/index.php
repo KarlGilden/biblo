@@ -11,12 +11,13 @@
     <p class="spacer-md"></p>
 
     <div class="hero-buttons">
-      <a href="/library/mi">
-        <button class="hero-button btn-highlight">Start reading</button>
-      </a>
-      <p class="spacer-sm"></p>
-      <button class="hero-button">Get involved!</button>
+        <a href="/library/mi">
+          <button class="hero-button btn-highlight">Start reading</button>
+        </a>
+        <p class="spacer-sm"></p>
+        <button class="hero-button">Learn More</button>
     </div>
+
 
     <p class="spacer-sm"></p>
 
