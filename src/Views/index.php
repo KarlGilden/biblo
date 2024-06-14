@@ -26,6 +26,13 @@
     </div>
   </div>
 
+  <p class="spacer-md"></p>
+  <p class="spacer-md"></p>
+  <p class="spacer-md"></p>
+
+  <section class="section">
+    <h1>What is Biblo?</h1>
+  </section>
 </div>
 
 <?php require 'Components/Footer.php' ?>
