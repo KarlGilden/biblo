@@ -34,7 +34,7 @@ class LessonController extends Controller
 
     public function get_translation($iso, $text){
         $api_key = "&key=" . getenv("GOOGLE_TRANSLATE_API");
-        $query = "&q=" . urlencode($text);
+        $query = "&q=" . $text;
         $source = "&source=" . $iso;
         $target = "&target=en";
         $format = "&format=text";
