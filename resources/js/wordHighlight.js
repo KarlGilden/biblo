@@ -1,6 +1,4 @@
 const handleSelectText = async () => {
-    removeHighlight();
-
     selectText();
 
     const selectedText = getSelectedText();
@@ -46,6 +44,7 @@ const getSelectedText = () => {
 const selectText = () => {
 
     const selection = window.getSelection().getRangeAt(0)
+
     window.getSelection()?.removeAllRanges();
 
     const startNode = selection.startContainer.nodeValue === " " 
@@ -54,20 +53,19 @@ const selectText = () => {
         : 
         selection.startContainer.parentElement;
 
-    const endNode = selection.endContainer.nodeValue === " " 
+    const endNode = selection.endContainer.nodeValue === " "
         ? 
         selection.endContainer.previousSibling 
         : 
         selection.endContainer.parentElement;
 
-    const containerNode = startNode?.parentElement;
+    const containerNode = startNode?.parentElement.id === "selected-text" 
+        ? 
+        startNode?.parentElement.parentElement
+        :
+        startNode?.parentElement;
 
     if(!startNode || !endNode || !containerNode) return;
-
-    // if selection starts within a selected text
-    if(containerNode.id === "selected-text"){
-         return startNode.parentElement?.replaceWith(...startNode.parentElement.childNodes);
-    }
 
     const highlight = _createAndReturnHighlight();
 
@@ -100,7 +98,9 @@ const _createAndReturnHighlight = () => {
 
 
 const _highlightText = (startNode, endNode, containerNode, highlight) => {
-   
+    
+    removeHighlight();
+
     const maxPhraseLength = 10;
 
     // get ids as integers "w1" -> 1
