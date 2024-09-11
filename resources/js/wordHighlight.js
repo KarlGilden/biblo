@@ -1,19 +1,23 @@
 const handleSelectText = async () => {
-    selectText();
+    const selectedNodes = getSelectedNodes();
+    const highlight = _createAndReturnHighlight();
 
-    const selectedText = getSelectedText();
+    highlightText(selectedNodes, highlight);
+
+    const selectedText = getTextContentFromHighlight();
+
     displayOriginal(selectedText);
     displayTranslation("");
 
     const translation = await getTranslation(selectedText);
+
     displayTranslation(translation);
 };
 
 const getTranslation = async (text) => {
     const res = await fetch(`/translate/mi/${text}`, {})
-
     const data = await res.json();
-    console.log(data)
+
     return data.data.translations[0].translatedText;
 };
 
@@ -33,7 +37,7 @@ const displayTranslation = (translatedText) => {
     dictionary.value = translatedText;
 };
 
-const getSelectedText = () => {
+const getTextContentFromHighlight = () => {
     const highlight = document.getElementById("selected-text");
 
     if(!highlight) return;
@@ -41,19 +45,16 @@ const getSelectedText = () => {
     return formatWord(highlight.textContent);
 };
 
-const selectText = () => {
-
+const getSelectedNodes = () => {
     const selection = window.getSelection().getRangeAt(0)
 
-    window.getSelection()?.removeAllRanges();
-
-    const startNode = selection.startContainer.nodeValue === " " 
+    const startNode = selection.startContainer.nodeValue === " " || selection.startContainer.nodeValue === "\n"
         ? 
         selection.startContainer.nextSibling 
         : 
         selection.startContainer.parentElement;
 
-    const endNode = selection.endContainer.nodeValue === " "
+    const endNode = selection.endContainer.nodeValue === " " || selection.endContainer.nodeValue === "\n"
         ? 
         selection.endContainer.previousSibling 
         : 
@@ -65,11 +66,13 @@ const selectText = () => {
         :
         startNode?.parentElement;
 
-    if(!startNode || !endNode || !containerNode) return;
+    window.getSelection()?.removeAllRanges();
 
-    const highlight = _createAndReturnHighlight();
-
-    _highlightText(startNode, endNode, containerNode, highlight);
+    return {
+        startNode: startNode,
+        endNode: endNode,
+        containerNode: containerNode
+    }
 }
 
 
@@ -87,7 +90,6 @@ const removeHighlight = () => {
     }
 };
 
-
 const _createAndReturnHighlight = () => {
     const highlight = document.createElement("span")
     highlight.classList.add("selected-text");
@@ -96,8 +98,13 @@ const _createAndReturnHighlight = () => {
     return highlight
 }
 
+const highlightText = (selectedNodes, highlight) => {
 
-const _highlightText = (startNode, endNode, containerNode, highlight) => {
+    const startNode = selectedNodes.startNode;
+    const endNode = selectedNodes.endNode;
+    const containerNode = selectedNodes.containerNode;
+
+    if(!startNode || !endNode || !containerNode) return;
     
     removeHighlight();
 
