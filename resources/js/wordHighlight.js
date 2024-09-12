@@ -48,17 +48,25 @@ const getTextContentFromHighlight = () => {
 const getSelectedNodes = () => {
     const selection = window.getSelection().getRangeAt(0)
 
-    const startNode = selection.startContainer.nodeValue === " " || selection.startContainer.nodeValue === "\n"
+    let startNode = isValidString(selection.startContainer.nodeValue)
         ? 
-        selection.startContainer.nextSibling 
+        selection.startContainer.parentElement
         : 
-        selection.startContainer.parentElement;
+        selection.startContainer.nextSibling;
 
-    const endNode = selection.endContainer.nodeValue === " " || selection.endContainer.nodeValue === "\n"
+    let endNode = isValidString(selection.endContainer.nodeValue)
         ? 
-        selection.endContainer.previousSibling 
+        selection.endContainer.parentElement
         : 
-        selection.endContainer.parentElement;
+        selection.endContainer.previousSibling;
+
+    if(endNode.id === "selected-text"){
+        endNode = startNode;
+    }
+
+    if(startNode.id === "selected-text"){
+        startNode = endNode;
+    }
 
     const containerNode = startNode?.parentElement.id === "selected-text" 
         ? 
@@ -114,6 +122,10 @@ const highlightText = (selectedNodes, highlight) => {
     let startIndex = parseInt(startNode.id.substring(1));
     let endIndex = parseInt(endNode.id.substring(1));
 
+    if(startIndex > endIndex){
+        endIndex = startIndex;
+    }
+
     if(endIndex > (startIndex + maxPhraseLength)){
         endIndex = startIndex + maxPhraseLength;
     }
@@ -136,4 +148,14 @@ const highlightText = (selectedNodes, highlight) => {
             highlight.appendChild(nextSibling)
         }
     }
+};
+
+const isValidString = (str) => {
+    str = str.trim();
+
+    if(str.length > 0 ){
+        return true;
+    }
+
+    return false;
 };
