@@ -449,10 +449,11 @@ a{
 .burger-button{
     border: none;
     background-color: transparent;
-    font-size: 1.5rem;
     cursor: pointer;
     font-weight: bold;
     padding: 0.5rem;
+    color: black;
+    font-size: 2rem;
 }
 
 .burger-menu{
