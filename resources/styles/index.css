@@ -432,7 +432,8 @@ a{
     display: flex;
     flex-direction: column;
     align-items: center;
-    list-style: none
+    list-style: none;
+    height: 100%;
 }
 
 .burger-body .nav-link{
@@ -457,8 +458,9 @@ a{
 .burger-menu{
     top: 0;
     bottom: 0;
-    position: absolute;
+    position: fixed;
     background-color: white;
+    font-size: 1.5rem;
 }
 
 .menu-open{

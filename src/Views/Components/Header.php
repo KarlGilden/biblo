@@ -78,7 +78,7 @@
                   <li>Biblo</li>
                 </a>
               </div>
-              <button class="burger-button" onclick="openBurgerMenu()">☰</button>     
+              <button class="burger-button" onclick="openBurgerMenu()">☓</button>     
             </div>
             <div class="burger-body">
               <a href="/" class="nav-link" onclick="openBurgerMenu()">
