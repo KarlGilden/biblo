@@ -1,3 +1,17 @@
+<?php 
+  switch($iso){
+    case "mi":
+      $dropdown_text = "Māori";
+      break;
+    
+    case "tl":
+      $dropdown_text = "Tagalog";
+      break;
+    default:
+    $dropdown_text = "Select a language";
+  }
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -20,43 +34,28 @@
     <div class="page-wrapper">
 
       <nav class="navbar <?php echo $data["nav_color"]; ?> ">
-        <div class="nav-left-wrapper">
-          <div class="logo">
+        <div class="nav-links">
             <a href="/" class="logo-link">
-              <li>Biblo</li>
+              <p>Biblo</p>
             </a>
-          </div>
-          <p class="spacer-md"></p>
-          <ul class="nav-links">
+            <p class="spacer-md"></p>
             <a href="/" class="nav-link">
-              <li>Home</li>
+              <p>Home</p>
             </a>
             <p class="spacer-sm"></p>
             <a href="/library/<?= $iso ?>" class="nav-link">
-              <li>Library</li>
+              <p>Library</p>
             </a>
             <p class="spacer-sm"></p>
             <a href="/learning-resources" class="nav-link">
-              <li>Resources</li>
+              <p>Resources</p>
             </a>
-          </ul>
         </div>
         
         <p class="spacer-sm"></p>
-        <div class=" dropdown">
-              <?php 
-                    switch($iso){
-                      case "mi":
-                        echo "Māori";
-                        break;
-                      
-                      case "tl":
-                        echo "Tagalog";
-                        break;
-                      default:
-                        echo "Select a language";
-                    }
-              ?> 🞃
+
+        <div class="dropdown">
+            <?php echo $dropdown_text . " 🞃"; ?> 
             <ul class="dropdown-links">
                 <a href="/library/mi" class="dropdown-link">
                   <div>Māori</div>
@@ -69,29 +68,32 @@
                 </a>
             </ul>
           </div>
+
           <div class="burger-menu-container">
             <button class="burger-button" onclick="openBurgerMenu()"><i class="fa fa-bars" aria-hidden="true"></i></button>     
           </div>
+
           <div id="burger-menu" class="burger-menu menu-closed <?php echo $data["nav_color"]; ?>">
             <div class="navbar">
               <div class="logo">
                 <a href="/" class="logo-link">
-                  <li>Biblo</li>
+                  <p>Biblo</p>
                 </a>
               </div>
               <button class="burger-button" onclick="openBurgerMenu()"><i class="fa fa-times" aria-hidden="true"></i></button>     
             </div>
+            
             <div class="burger-body">
               <a href="/" class="nav-link" onclick="openBurgerMenu()">
-                <li>Home</li>
+                <p>Home</p>
               </a>
               <p class="spacer-sm"></p>
               <a href="/library" class="nav-link" onclick="openBurgerMenu()">
-                <li>Library</li>
+                <p>Library</p>
               </a>
               <p class="spacer-sm"></p>
               <a href="/learning-resources" class="nav-link" onclick="openBurgerMenu()">
-                <li>Resources</li>
+                <p>Resources</p>
               </a>
             </div>
           </div>  
