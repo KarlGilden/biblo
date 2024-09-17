@@ -12,7 +12,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
     <title><?= $data["title"] ?></title>
   </head>
   <body>
@@ -69,7 +70,7 @@
             </ul>
           </div>
           <div class="burger-menu-container">
-            <button class="burger-button" onclick="openBurgerMenu()">☰</button>     
+            <button class="burger-button" onclick="openBurgerMenu()"><i class="fa fa-bars" aria-hidden="true"></i></button>     
           </div>
           <div id="burger-menu" class="burger-menu menu-closed <?php echo $data["nav_color"]; ?>">
             <div class="navbar">
@@ -78,7 +79,7 @@
                   <li>Biblo</li>
                 </a>
               </div>
-              <button class="burger-button" onclick="openBurgerMenu()">☓</button>     
+              <button class="burger-button" onclick="openBurgerMenu()"><i class="fa fa-times" aria-hidden="true"></i></button>     
             </div>
             <div class="burger-body">
               <a href="/" class="nav-link" onclick="openBurgerMenu()">
